@@ -4,11 +4,15 @@ class Piece:
     common interface methods for various types of pieces.
     """
 
-    def move_without_capture(self, start, end, board):
+    def __init__(self):
         """
-        check if move_without_capture is valid for the type of piece
-            if valid, update board by putting piece into the end square and return true
-            otherwise, return false
+        initialize piece
+        """
+
+    def is_move_eligible(self, start, end, board):
+        """
+        Should be overwritten by each type of subClass
+        Check if the move is eligible for the type of piece
         :param start: start square of the piece
         :param end: end square of the piece
         :param board: reference to the game board 2-D list
@@ -16,16 +20,15 @@ class Piece:
         """
         pass
 
-    def capture(self, start, end, board):
+    def move(self, start, end, board):
         """
-        check if capture is valid for the type of piece
-            if valid, update board by removing the captured piece on end square and
-            putting piece into the end square and return true
-            otherwise, return false
+        Find if any piece is on end square to decide if this move is capture or not
+        If it is capture, update board by removing the captured piece on end square
+        Put start piece into the end square
         :param start: start square of the piece
         :param end: end square of the piece
         :param board: reference to the game board 2-D list
-        :return: True if move is valid, otherwise false
+        :return: void
         """
         pass
 
@@ -35,25 +38,64 @@ class King(Piece):
     Represents King Piece and contains King's implementation of general behaviors
     """
 
-    def move_without_capture(self, start, end, board):
+    def is_move_eligible(self, start, end, board):
+        """
+        Find if move is eligible for king piece.
+        King can move 1 space in any direction, but cannot jump pieces
+        :param start: start square of the piece
+        :param end: end square of the piece
+        :param board: reference to the game board 2-D list
+        :return: True if move is valid, otherwise false
+        """
         pass
 
-    def capture(self, start, end, board):
-        pass
 
-
-class Pawn(Piece):
+class Rook(Piece):
     """
-    Represents Pawn Piece and contains Pawn's implementation of general behaviors
-    Also includes the method promote() specific to Pawn
+    Represents Rook Piece and contains Rook's implementation of general behaviors
     """
 
-    def move_without_capture(self, start, end, board):
+    def is_move_eligible(self, start, end, board):
+        """
+        King can move 1 space in any direction, but cannot jump pieces.
+        :param start: start square of the piece
+        :param end: end square of the piece
+        :param board: reference to the game board 2-D list
+        :return: True if move is valid, otherwise false
+        """
         pass
 
-    def capture(self, start, end, board):
 
+class Bishop(Piece):
+    """
+    Represents Bishop Piece and contains Bishop's implementation of general behaviors
+    """
+
+    def is_move_eligible(self, start, end, board):
+        """
+        Bishop can only move along the diagonal spaces of its current square
+        and cannot jump over pieces
+        :param start: start square of the piece
+        :param end: end square of the piece
+        :param board: reference to the game board 2-D list
+        :return: True if move is valid, otherwise false
+        """
         pass
 
-    def promote(self, target_piece, board):
+
+class Knight(Piece):
+    """
+    Represents Knight Piece and contains Knight's implementation of general behaviors
+    """
+
+    def is_move_eligible(self, start, end, board):
+        """
+        Bishop can move two spaces forward along the row or column
+        and then one space to the left or right of where it lands.
+        The Knight CAN jump over pieces.
+        :param start: start square of the piece
+        :param end: end square of the piece
+        :param board: reference to the game board 2-D list
+        :return: True if move is valid, otherwise false
+        """
         pass
