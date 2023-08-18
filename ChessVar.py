@@ -1,5 +1,3 @@
-import numpy
-
 
 def check_boundary(i):
     """
@@ -26,7 +24,7 @@ class ChessVar:
         _king_black: tuple of black king's coordinate
         _king_white: tuple of white king's coordinate
         """
-        self._board = numpy.empty((8, 8), dtype=Piece)
+        self._board = [[None for i in range(8)] for j in range(8)]
 
         self._board[0][0] = King(0)
         self._board[0][7] = King(1)
@@ -150,7 +148,7 @@ class ChessVar:
         if not piece.is_move_eligible(start, end, self._board):
             return False
 
-        backup_board = numpy.copy(self._board)
+        backup_board = self._board.copy()
         piece.move(start, end, self._board)
         if type(piece) is King:
             if piece.get_owner() == 0:
