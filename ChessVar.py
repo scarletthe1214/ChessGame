@@ -273,6 +273,7 @@ class Rook(Piece):
             while y != end[1]:
                 if board[start[0]][y] is not None:
                     return False
+                y += stepY
         else:
             # assume moving along x axis
             stepX = 1 if start[0] < end[0] else -1
@@ -280,6 +281,7 @@ class Rook(Piece):
             while x != end[0]:
                 if board[x][start[1]] is not None:
                     return False
+                x += stepX
         return True
 
 
@@ -367,3 +369,5 @@ if __name__ == "__main__":
     print(game.make_move('g1', 'f1'))
     print(game)
     print(game.get_game_state())
+    print(game.make_move('h2', 'h7'))
+    print(game)
