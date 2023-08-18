@@ -1,4 +1,7 @@
-
+# Author: Lujia He
+# GitHub username: scarletthe1214
+# Date: 8-17-2023
+# Description: A class named ChessVar for playing an abstract board game that is a variant of chess.
 def check_boundary(i):
     """
     check if i is between 0, 7
@@ -370,4 +373,8 @@ if __name__ == "__main__":
     print(game)
     print(game.get_game_state())
     print(game.make_move('h2', 'h7'))
+    print(game)
+    print(game.make_move('b2', 'h8'))
+    print(game)
+    print(game.make_move('h7', 'h8'))
     print(game)
